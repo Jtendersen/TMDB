@@ -50,3 +50,6 @@ En este sentido, deberás enfocarte primero en las funcionalidades _Must Have_ (
 ### Pledu
 
 Hacé [_click_ acá](https://pledu.plataforma5.la/bootcamp/omdb/solo%20week-581874b7) para acceder al módulo correspondiente en Pledu.
+
+API KEY= ef0f5ca3ae927c0b99427766940e8457
+SAMPLE REQUEST https://api.themoviedb.org/3/movie/550?api_key=ef0f5ca3ae927c0b99427766940e8457
