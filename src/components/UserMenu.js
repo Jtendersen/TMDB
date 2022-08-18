@@ -11,10 +11,15 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { FavoritesContext } from "../utils/FavoritesContext";
 import Nav from "react-bootstrap/Nav";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import CardMovieFav from "../commons/CardMovieFav";
 
 const UserMenu = () => {
   const userSuccess = useContext(UserSuccessContext);
-  const favorites = useContext(FavoritesContext);
+
+  const [userSearch, setUserSearch] = useState("");
+  const [findedUser, setFindedUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState({});
 
   // const [movieData, setMovieData] = useState({});
 
@@ -34,8 +39,27 @@ const UserMenu = () => {
   //     .then((res) => setMovieData(res.data));
   // };
 
-  const handleSubmit = () => {};
-  const handleSearchUser = () => {};
+  const handleSearchUser = (e) => {
+    setUserSearch(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.get(`/api/users/find/${userSearch}`).then((res) => {
+      console.log("ESTA ES LA RESPONSE DEL USER FIND...", res.data);
+      setFindedUsers(res.data);
+    });
+  };
+
+  const userDetails = (userClickedId) => {
+    console.log("este es el id de usuario", userClickedId);
+    const selectedUserIndex = findedUser.findIndex(
+      (user) => user.id === userClickedId
+    );
+    setSelectedUser(findedUser[selectedUserIndex]);
+  };
+
+  console.log("este es el usuario clickeado con todos sus datos", selectedUser);
 
   return (
     <div className="bg-primary" variant="dark">
@@ -69,25 +93,48 @@ const UserMenu = () => {
       <Container fluid>
         <Row>
           <Col className="text-light text-center" xs={3}>
-            YOUR FAVORITE LIST <hr />
+            USERS' FINDER <hr />
             <Card className="my-4">
               <ListGroup variant="flush">
-                {/* {favorites.favorites.map((movie) => (
+                {findedUser.map((user) => (
                   <ListGroup.Item
-                    key={movie.tmdbId}
-                    onClick={() => searchMovieFav(movie.tmdbId)}
+                    key={user.id}
+                    onClick={() => {
+                      userDetails(user.id);
+                    }}
+                    eventKey={user.id}
                   >
-                    {movie.movieTitle}
+                    {user.name} {user.lastname}
                   </ListGroup.Item>
-                ))} */}
+                ))}
               </ListGroup>
             </Card>
           </Col>
-          <Col className="text-center">
+          <Col className="text-justify text-light">
             <div className="bg-primary" variant="dark">
-              <Row md={4} className="m-2 ">
-                {/* {movieData.id ? <CardMovie {...movieData} /> : ""} */}
+              <Row md={3} className="m-2">
+                <div>Username: {selectedUser.username}</div>
+                <div>Register Email: {selectedUser.email}</div>
+                <div className="text-center">
+                  <Button className="" variant="light">
+                    See {selectedUser.name}'s favorites
+                  </Button>
+                </div>
               </Row>
+              <Row md={3} className="m-2">
+                {selectedUser.favorites &&
+                  selectedUser.favorites.map((movie) => {
+                    return <CardMovieFav movie={movie} />;
+                  })}
+
+                {/* {
+                    selectedUser.favorites[0]?(selectedUser.favorites.map((movie)=>{
+                      return <CardMovieFav movie={movie} />;
+                    })):<div>EL USUARIO ES AMARGO Y NO TIENE FAVORITOS<div/>
+                  } */}
+              </Row>
+
+              {/* {movieData.id ? <CardMovie {...movieData} /> : ""} */}
             </div>
           </Col>
         </Row>

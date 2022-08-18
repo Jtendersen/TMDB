@@ -8,10 +8,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { UserSuccessContext } from "../utils/UserSuccessContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHeartCircleMinus,
-  faHeartCirclePlus,
-} from "@fortawesome/free-solid-svg-icons";
+import { faHeartCircleMinus } from "@fortawesome/free-solid-svg-icons";
 import Tooltip from "react-bootstrap/Tooltip";
 import { OverlayTrigger } from "react-bootstrap";
 import axios from "axios";

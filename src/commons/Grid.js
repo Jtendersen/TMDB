@@ -16,7 +16,6 @@ const Grid = () => {
       >
         <Nav.Item>
           <Nav.Link eventKey="/movies" as={Link} to="/movies">
-            {" "}
             Movies
           </Nav.Link>
         </Nav.Item>

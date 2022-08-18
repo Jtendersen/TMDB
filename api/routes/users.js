@@ -24,29 +24,29 @@ router.get("/me", validateAuth, (req, res) => {
   res.send(req.user);
 });
 
-router.get("/find", (req, res, next) => {
+router.get("/find/:query", (req, res, next) => {
+  console.log("ESTE ES EL REQ.BODY QUE LLEGA...", req.params.query);
   User.findAll({
     where: {
       [Op.or]: [
         {
           name: {
-            [Op.iLike]: req.body.search,
+            [Op.iLike]: `%${req.params.query}%`,
           },
         },
         {
-          lastname: { [Op.iLike]: req.body.search },
+          lastname: { [Op.iLike]: `%${req.params.query}%` },
         },
         {
-          username: { [Op.iLike]: req.body.search },
+          username: { [Op.iLike]: `%${req.params.query}%` },
         },
         {
-          email: { [Op.iLike]: req.body.search },
+          email: { [Op.iLike]: `%${req.params.query}%` },
         },
       ],
     },
     include: { model: Favorite },
   }).then((resp) => {
-    console.log("ESTE ES EL RESULTADO DE BUSQUEDA DE USERS", resp);
     res.send(resp);
   });
 });
