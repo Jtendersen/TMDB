@@ -15,6 +15,7 @@ router.post("/", (req, res, next) => {
     findedUser.validatePassword(password).then((isValid) => {
       if (!isValid) return res.sendStatus(401);
       const payload = {
+        username: findedUser.username,
         name: findedUser.name,
         lastname: findedUser.lastname,
       };
