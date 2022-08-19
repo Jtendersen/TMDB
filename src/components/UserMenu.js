@@ -21,24 +21,6 @@ const UserMenu = () => {
   const [findedUser, setFindedUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState({});
 
-  // const [movieData, setMovieData] = useState({});
-
-  // useEffect(() => {
-  //   axios
-  //     .get(`/api/favorites/${userSuccess.userSuccess.username}`)
-  //     .then((res) => {
-  //       favorites.setFavorites(res.data);
-  //     });
-  // }, []);
-
-  // const searchMovieFav = (tmdbId) => {
-  //   axios
-  //     .get(
-  //       `https://api.themoviedb.org/3/movie/${tmdbId}?api_key=ef0f5ca3ae927c0b99427766940e8457&language=es-AR`
-  //     )
-  //     .then((res) => setMovieData(res.data));
-  // };
-
   const handleSearchUser = (e) => {
     setUserSearch(e.target.value);
   };
@@ -46,20 +28,16 @@ const UserMenu = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.get(`/api/users/find/${userSearch}`).then((res) => {
-      console.log("ESTA ES LA RESPONSE DEL USER FIND...", res.data);
       setFindedUsers(res.data);
     });
   };
 
   const userDetails = (userClickedId) => {
-    console.log("este es el id de usuario", userClickedId);
     const selectedUserIndex = findedUser.findIndex(
       (user) => user.id === userClickedId
     );
     setSelectedUser(findedUser[selectedUserIndex]);
   };
-
-  console.log("este es el usuario clickeado con todos sus datos", selectedUser);
 
   return (
     <div className="bg-primary" variant="dark">
@@ -68,10 +46,17 @@ const UserMenu = () => {
           <Col xs={2} className="text-light">
             <ul>
               <li>
-                Name: {userSuccess.userSuccess.name}{" "}
-                {userSuccess.userSuccess.lastname}
+                Name:{" "}
+                {userSuccess.userSuccess.name ||
+                  userSuccess.userSuccess.given_name}{" "}
+                {userSuccess.userSuccess.lastname ||
+                  userSuccess.userSuccess.family_name}
               </li>
-              <li>Username: {userSuccess.userSuccess.username}</li>
+              <li>
+                Username:{" "}
+                {userSuccess.userSuccess.username ||
+                  userSuccess.userSuccess.email}
+              </li>
             </ul>
           </Col>
           <Col className="display-4 text-light">USER MENU</Col>
@@ -155,7 +140,7 @@ const UserMenu = () => {
             TV Shows
           </Nav.Link>
         </Nav.Item>
-        {userSuccess.userSuccess.username ? (
+        {userSuccess.userSuccess.username || userSuccess.userSuccess.email ? (
           <Nav.Item>
             <Nav.Link eventKey="/favorites" as={Link} to="/favorites">
               Favorites

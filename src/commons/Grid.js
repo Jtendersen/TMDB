@@ -24,7 +24,7 @@ const Grid = () => {
             TV Shows
           </Nav.Link>
         </Nav.Item>
-        {userSuccess.userSuccess.username ? (
+        {userSuccess.userSuccess.username || userSuccess.userSuccess.email ? (
           <Nav.Item>
             <Nav.Link eventKey="/favorites" as={Link} to="/favorites">
               Favorites

@@ -3,6 +3,7 @@ import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import GoogleLoginComponent from "../commons/GoogleLoginComponent";
 
 const RegisterForm = () => {
   const [validated, setValidated] = useState(false);
@@ -52,7 +53,6 @@ const RegisterForm = () => {
         lastname: lastName,
         password: pass,
       })
-      .then((res) => console.log(res.data))
       .then(() => handleClose())
       .catch((err) => console.log(err));
   };
@@ -148,6 +148,7 @@ const RegisterForm = () => {
         </Modal.Body>
         <Modal.Footer>
           <>
+            <GoogleLoginComponent />
             <Button variant="secondary" onClick={handleClose}>
               Cancel
             </Button>

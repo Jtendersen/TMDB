@@ -19,7 +19,6 @@ const Favorites = () => {
     axios
       .get(`/api/favorites/${userSuccess.userSuccess.username}`)
       .then((res) => {
-        console.log("ESTA ES LA DATA DEL FRONT...FAVS", res.data);
         favorites.setFavorites(res.data);
       });
   }, []);
@@ -42,7 +41,7 @@ const Favorites = () => {
             TV Shows
           </Nav.Link>
         </Nav.Item>
-        {userSuccess.userSuccess.username ? (
+        {userSuccess.userSuccess.username || userSuccess.userSuccess.email ? (
           <Nav.Item>
             <Nav.Link eventKey="/favorites" as={Link} to="/favorites">
               Favorites

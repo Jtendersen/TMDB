@@ -17,7 +17,6 @@ const TvShows = () => {
         "https://api.themoviedb.org/3/trending/tv/week?api_key=ef0f5ca3ae927c0b99427766940e8457&language=es-AR"
       )
       .then((res) => {
-        console.log("THESE ARE THE MUVIS!!", res.data.results);
         movies.setMovies(res.data.results);
       });
   }, []);
@@ -39,7 +38,7 @@ const TvShows = () => {
             TV Shows
           </Nav.Link>
         </Nav.Item>
-        {userSuccess.userSuccess.username ? (
+        {userSuccess.userSuccess.username || userSuccess.userSuccess.email ? (
           <Nav.Item>
             <Nav.Link eventKey="/favorites" as={Link} to="/favorites">
               Favorites

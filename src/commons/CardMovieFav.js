@@ -89,7 +89,8 @@ const CardMovieFav = ({ movie }) => {
                 <Container>
                   <Row>
                     <Col onClick={() => setLgShow(true)}>{title}</Col>
-                    {userSuccess.userSuccess.username ? (
+                    {userSuccess.userSuccess.username ||
+                    userSuccess.userSuccess.email ? (
                       <>
                         <hr />
                         <Col>
@@ -123,7 +124,8 @@ const CardMovieFav = ({ movie }) => {
               <Modal.Title id="example-modal-sizes-title-lg">
                 {title}
                 {"  "}
-                {userSuccess.userSuccess.username ? (
+                {userSuccess.userSuccess.username ||
+                userSuccess.userSuccess.email ? (
                   <>
                     <OverlayTrigger
                       placement="right"

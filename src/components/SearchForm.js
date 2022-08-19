@@ -16,7 +16,6 @@ const SearchForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("ESTA ES LA QUERY", searchWord);
     axios.get(`${API_SEARCH}=${searchWord}`).then((res) => {
       movies.setMovies(res.data.results);
     });

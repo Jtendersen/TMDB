@@ -6,6 +6,7 @@ import axios from "axios";
 import { UserSuccessContext } from "../utils/UserSuccessContext";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import GoogleLoginComponent from "../commons/GoogleLoginComponent";
 
 const LoginForm = () => {
   const userSuccess = useContext(UserSuccessContext);
@@ -60,7 +61,6 @@ const LoginForm = () => {
         <br />
         Not a User?
         <Link to="/register">REGISTER!</Link>
-        {/* <a href="/register"> REGISTER!</a> */}
       </>
     );
   };
@@ -143,6 +143,7 @@ const LoginForm = () => {
             </>
           ) : (
             <>
+              <GoogleLoginComponent />
               <Button variant="secondary" onClick={handleClose}>
                 Close
               </Button>
