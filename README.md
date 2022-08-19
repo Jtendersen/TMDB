@@ -55,3 +55,29 @@ API KEY= ef0f5ca3ae927c0b99427766940e8457
 SAMPLE REQUEST "https://api.themoviedb.org/3/movie/550?api_key=ef0f5ca3ae927c0b99427766940e8457"
 API_IMG = "https://image.tmdb.org/t/p/w500/"
 API_SEARCH = "https://api.themoviedb.org/3/search/movie?api_key=ef0f5ca3ae927c0b99427766940e8457&query"
+
+------------**KNOWN BUGS**--------------------------------
+
+-Add TV Shows to Favorites. Conditional routes on axios.get in CardMovieFav **SOLVED 19-08-2022**
+-Show TV Shows on Favorites **SOLVED 19-08-2022**
+-Validate with bootstrap in register form with same IDs **SOLVED 19-08-2022**
+-User's search visualization. Show headers only after search. **SOLVED 19-08-2022**
+-Movies-TV favorites show trending header even after a search
+-Auto refresh on deleting favorites.
+-Favorite icon must be displayed ok if movie/tvShow is a favorite
+-Search is functional for movies only and displays over movies/tvShows. Does not work on favorites tag.
+-Search for movies or tvShows depending on which tab you are positioned.
+-Consider extreme cases. No movies? No images? No user? **SOLVED IMG IF NOT FOUND 19-08-2022**
+-Titles in TV Shows. Shown as "name" in TMDB. **SOLVED 19-08-2022**
+-On register put first letters in uppercase.
+-Modify DB to accept register with google. Could be done replacing "userneme" with "email".
+-Navigate to "home" after register **SOLVED 19-08-20022**
+-Home must show trending movies on loading **SOLVED 19-08-2022**
+-Favorites with google login doesn't work. Must be solved by registering with google.
+-Show message after creating/deleting favorites. Just a console log is shown
+-Show message after registering user.
+-Log in after registering a user.
+-Google log in doesn't persist.
+-Upper and lower text in search bar should change according to search query
+-Display error message if no movie/ no user is found
+-Improve Responsive behaviour on user's menu

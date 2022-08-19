@@ -12,6 +12,7 @@ router.post("/add/:username", async (req, res, next) => {
   });
   try {
     const favorite = await Favorite.create({
+      media_type: req.body.media_type,
       movieTitle: req.body.movieTitle,
       tmdbId: req.body.tmdbId,
       userId: findedUser.dataValues.id,
@@ -42,7 +43,6 @@ router.get("/:username", async (req, res, next) => {
 });
 
 router.delete("/:username", async (req, res, next) => {
-  console.log(req.body);
   try {
     const findedUser = await User.findOne({
       where: {

@@ -17,11 +17,15 @@ import { OverlayTrigger } from "react-bootstrap";
 import axios from "axios";
 
 const CardMovie = ({
+  media_type,
+  name,
   title,
   poster_path,
   overview,
   original_title,
+  original_name,
   release_date,
+  first_air_date,
   vote_average,
   id,
 }) => {
@@ -42,8 +46,9 @@ const CardMovie = ({
   const addToFavorites = () => {
     axios
       .post(`/api/favorites/add/${userSuccess.userSuccess.username}`, {
-        movieTitle: title,
+        movieTitle: title || name,
         tmdbId: id,
+        media_type: media_type,
       })
       .then(() => console.log("Favorite was magicaly created"));
     setFavorite(!favorite);
@@ -68,7 +73,11 @@ const CardMovie = ({
           <Card.Img
             className="img-fluid"
             variant="top"
-            src={API_IMG + poster_path}
+            src={
+              poster_path
+                ? API_IMG + poster_path
+                : "https://sciences.ucf.edu/wp-content/uploads/sites/5/2021/09/No-Image-Available-500x600-1.png"
+            }
             onClick={() => setLgShow(true)}
           />
           <Card.Body>
@@ -76,7 +85,7 @@ const CardMovie = ({
               <Card.Title className="text-center">
                 <Container>
                   <Row>
-                    <Col onClick={() => setLgShow(true)}>{title}</Col>
+                    <Col onClick={() => setLgShow(true)}>{title || name}</Col>
                     {userSuccess.userSuccess.username ||
                     userSuccess.userSuccess.email ? (
                       <>
@@ -117,7 +126,7 @@ const CardMovie = ({
           >
             <Modal.Header closeButton>
               <Modal.Title id="example-modal-sizes-title-lg">
-                {title}
+                {title || name}
                 {"  "}
                 {userSuccess.userSuccess.username ||
                 userSuccess.userSuccess.email ? (
@@ -148,7 +157,11 @@ const CardMovie = ({
             <Modal.Body>
               <div className="container text-center">
                 <img
-                  src={API_IMG + poster_path}
+                  src={
+                    poster_path
+                      ? API_IMG + poster_path
+                      : "https://sciences.ucf.edu/wp-content/uploads/sites/5/2021/09/No-Image-Available-500x600-1.png"
+                  }
                   alt="movieImg"
                   className="img-fluid"
                 />
@@ -164,10 +177,10 @@ const CardMovie = ({
                 <hr />
                 <Container>
                   <Row>
-                    <Col>Original Title: {original_title}</Col>
+                    <Col>Original Title: {original_title || original_name}</Col>
                   </Row>
                   <Row>
-                    <Col>Release Date: {release_date}</Col>
+                    <Col>Release Date: {release_date || first_air_date}</Col>
                   </Row>
                   <Row>
                     <Col>Rating: {vote_average}</Col>

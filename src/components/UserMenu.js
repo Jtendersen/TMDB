@@ -1,14 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import { UserSuccessContext } from "../utils/UserSuccessContext";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
-import CardMovie from "../commons/CardMovie";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
-import { FavoritesContext } from "../utils/FavoritesContext";
 import Nav from "react-bootstrap/Nav";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
@@ -18,7 +16,7 @@ const UserMenu = () => {
   const userSuccess = useContext(UserSuccessContext);
 
   const [userSearch, setUserSearch] = useState("");
-  const [findedUser, setFindedUsers] = useState([]);
+  const [findedUsers, setFindedUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState({});
 
   const handleSearchUser = (e) => {
@@ -33,10 +31,10 @@ const UserMenu = () => {
   };
 
   const userDetails = (userClickedId) => {
-    const selectedUserIndex = findedUser.findIndex(
+    const selectedUserIndex = findedUsers.findIndex(
       (user) => user.id === userClickedId
     );
-    setSelectedUser(findedUser[selectedUserIndex]);
+    setSelectedUser(findedUsers[selectedUserIndex]);
   };
 
   return (
@@ -75,55 +73,68 @@ const UserMenu = () => {
         </Row>
       </Container>
       <hr />
-      <Container fluid>
-        <Row>
-          <Col className="text-light text-center" xs={3}>
-            USERS' FINDER <hr />
-            <Card className="my-4">
-              <ListGroup variant="flush">
-                {findedUser.map((user) => (
-                  <ListGroup.Item
-                    key={user.id}
-                    onClick={() => {
-                      userDetails(user.id);
-                    }}
-                    eventKey={user.id}
-                  >
-                    {user.name} {user.lastname}
-                  </ListGroup.Item>
-                ))}
-              </ListGroup>
-            </Card>
-          </Col>
-          <Col className="text-justify text-light">
-            <div className="bg-primary" variant="dark">
-              <Row md={3} className="m-2">
-                <div>Username: {selectedUser.username}</div>
-                <div>Register Email: {selectedUser.email}</div>
-                <div className="text-center">
-                  <Button className="" variant="light">
-                    See {selectedUser.name}'s favorites
-                  </Button>
-                </div>
-              </Row>
-              <Row md={3} className="m-2">
-                {selectedUser.favorites &&
-                  selectedUser.favorites.map((movie) => {
-                    return <CardMovieFav movie={movie} />;
-                  })}
+      {findedUsers.length ? (
+        <Container fluid>
+          <Row>
+            <Col className="text-light text-center" xs={3}>
+              USERS' FINDER <hr />
+              <Card className="my-4">
+                <ListGroup variant="flush">
+                  {findedUsers.map((user) => (
+                    <ListGroup.Item
+                      key={user.id}
+                      onClick={() => {
+                        userDetails(user.id);
+                      }}
+                      eventKey={user.id}
+                    >
+                      {user.name} {user.lastname}
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              </Card>
+            </Col>
+            <Col className="text-justify text-light">
+              <div className="bg-primary" variant="dark">
+                {selectedUser.username ? (
+                  <>
+                    <Row md={5} className="m-2">
+                      <div>Username: {selectedUser.username}</div>
+                      <div>Email: {selectedUser.email}</div>
+                    </Row>
+                    <hr />
+                    <Row md={1} className="m-2 display-5">
+                      <div className="text-center">
+                        {selectedUser.name}'s favorites
+                      </div>
+                    </Row>
+                    <hr />
 
-                {/* {
-                    selectedUser.favorites[0]?(selectedUser.favorites.map((movie)=>{
-                      return <CardMovieFav movie={movie} />;
-                    })):<div>EL USUARIO ES AMARGO Y NO TIENE FAVORITOS<div/>
-                  } */}
-              </Row>
+                    {selectedUser.favorites.length ? (
+                      <Row md={5} className="m-2">
+                        {selectedUser.favorites.map((movie) => {
+                          return <CardMovieFav movie={movie} />;
+                        })}
+                      </Row>
+                    ) : (
+                      <>
+                        <div className="display-7 text-center">
+                          BORING USER HAS NO FAVORITES :(
+                        </div>
+                      </>
+                    )}
+                  </>
+                ) : (
+                  ""
+                )}
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      ) : (
+        ""
+      )}
 
-              {/* {movieData.id ? <CardMovie {...movieData} /> : ""} */}
-            </div>
-          </Col>
-        </Row>
-      </Container>
       <Nav
         variant="tabs"
         defaultActiveKey="/favorites"

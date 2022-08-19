@@ -3,14 +3,19 @@ import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import GoogleLoginComponent from "../commons/GoogleLoginComponent";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
+  const navigate = useNavigate();
+
   const [validated, setValidated] = useState(false);
 
   const [show, setShow] = useState(true);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    navigate("/");
+  };
 
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -64,8 +69,8 @@ const RegisterForm = () => {
           <Modal.Title>Register</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form hasValidate validated={validated} onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+          <Form validated={validated} onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput0">
               <Form.Label>Email</Form.Label>
               <Form.Control
                 onChange={handleChange}
@@ -114,7 +119,7 @@ const RegisterForm = () => {
                 Please, don't you have a first name?
               </Form.Control.Feedback>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
               <Form.Label>Last Name</Form.Label>
               <Form.Control
                 onChange={handleChange}
@@ -129,7 +134,7 @@ const RegisterForm = () => {
                 Don't you have a last name? Don't be shy!
               </Form.Control.Feedback>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
               <Form.Label>Password</Form.Label>
               <Form.Control
                 onChange={handleChange}
@@ -148,7 +153,6 @@ const RegisterForm = () => {
         </Modal.Body>
         <Modal.Footer>
           <>
-            <GoogleLoginComponent />
             <Button variant="secondary" onClick={handleClose}>
               Cancel
             </Button>

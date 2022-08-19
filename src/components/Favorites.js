@@ -59,7 +59,7 @@ const Favorites = () => {
               <Row xs={1} md={4} className="g-4 m-2 ">
                 {favoritesReal &&
                   favoritesReal.map((movie) => {
-                    return <CardMovieFav movie={movie} />;
+                    return <CardMovieFav movie={movie} key={movie.id} />;
                   })}
               </Row>
             </div>

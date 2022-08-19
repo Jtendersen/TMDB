@@ -8,6 +8,9 @@ Favorite.init(
     movieTitle: {
       type: DataTypes.STRING,
     },
+    media_type: {
+      type: DataTypes.STRING,
+    },
     tmdbId: {
       type: DataTypes.INTEGER,
       primaryKey: true,

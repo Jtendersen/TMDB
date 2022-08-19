@@ -25,7 +25,6 @@ router.get("/me", validateAuth, (req, res) => {
 });
 
 router.get("/find/:query", (req, res, next) => {
-  console.log("ESTE ES EL REQ.BODY QUE LLEGA...", req.params.query);
   User.findAll({
     where: {
       [Op.or]: [
