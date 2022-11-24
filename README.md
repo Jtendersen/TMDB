@@ -24,39 +24,30 @@ En este sentido, deberás enfocarte primero en las funcionalidades _Must Have_ (
 
 📕 **Prioridad Alta** (_Must Have_)
 
-- Buscar y listar películas.
-- Ver los detalles de una película o programa de televisión.
-- Crear usuarios.
-- _Loguear_ y _desloguear_ usuarios.
+- Buscar y listar películas. **GOT IT!**
+- Ver los detalles de una película o programa de televisión. **GOT IT!**
+- Crear usuarios. **GOT IT!**
+- _Loguear_ y _desloguear_ usuarios. **GOT IT!**
 
 📘 **Prioridad Media** (_Should Have_)
 
-- Agregar una película o programa a una lista de favoritos.
-- Ver una lista de favoritos.
-- Remover una película o programa de una lista de favoritos.
-- Diferenciar las rutas de _front-end_ para películas y programas de televisión.
+- Agregar una película o programa a una lista de favoritos. **GOT IT!**
+- Ver una lista de favoritos. **GOT IT! (REQUIRES LOGIN)**
+- Remover una película o programa de una lista de favoritos. **GOT IT!**
+- Diferenciar las rutas de _front-end_ para películas y programas de televisión. **GOT IT!**
 
 📗 **Prioridad Normal** (_Could Have_)
 
-- Buscar usuarios.
-- Ver el perfil de un usuario específico (con sus películas o programas favoritos).
-- Mantener sesión abierta ante un cierre del _browser_ o `refresh`.
+- Buscar usuarios. **GOT IT!**
+- Ver el perfil de un usuario específico (con sus películas o programas favoritos). **GOT IT!**
+- Mantener sesión abierta ante un cierre del _browser_ o `refresh`. **GOT IT!**
 
 📓 **Prioridad Baja** (_Won't Have_)
 
-- _Full responsive_.
-- _Loguear_ usuarios a través de su cuenta en Google.
+- _Full responsive_. **GOT IT! (SOME ISSUES PENDING)**
+- _Loguear_ usuarios a través de su cuenta en Google. **GOT IT!**
 
-### Pledu
-
-Hacé [_click_ acá](https://pledu.plataforma5.la/bootcamp/omdb/solo%20week-581874b7) para acceder al módulo correspondiente en Pledu.
-
-API KEY= ef0f5ca3ae927c0b99427766940e8457
-SAMPLE REQUEST "https://api.themoviedb.org/3/movie/550?api_key=ef0f5ca3ae927c0b99427766940e8457"
-API_IMG = "https://image.tmdb.org/t/p/w500/"
-API_SEARCH = "https://api.themoviedb.org/3/search/movie?api_key=ef0f5ca3ae927c0b99427766940e8457&query"
-
-------------**KNOWN BUGS**--------------------------------
+## Known Bugs (Last Updates)
 
 -Add TV Shows to Favorites. Conditional routes on axios.get in CardMovieFav **SOLVED 19-08-2022**
 -Show TV Shows on Favorites **SOLVED 19-08-2022**
@@ -81,3 +72,5 @@ API_SEARCH = "https://api.themoviedb.org/3/search/movie?api_key=ef0f5ca3ae927c0b
 -Upper and lower text in search bar should change according to search query
 -Display error message if no movie/ no user is found
 -Improve Responsive behaviour on user's menu
+
+![Logo](https://images2.imgbox.com/9c/52/1CexURHS_o.gif)
