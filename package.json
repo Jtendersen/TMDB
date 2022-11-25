@@ -1,7 +1,13 @@
 {
-  "name": "26-tmdb",
-  "version": "0.2.0",
+  "author": "Juan Manuel Tierno",
+  "name": "tmdb",
+  "version": "1.0.0",
   "private": true,
+  "main": "server.js",
+  "engines": {
+    "node": "16.15.1",
+    "npm": "8.11.0"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
     "@fortawesome/free-solid-svg-icons": "^6.1.2",
