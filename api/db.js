@@ -1,9 +1,13 @@
 const Sequelize = require("sequelize");
+const {
+  DB_NAME,
+  DB_USER,
+  DB_PASSWORD,
+  DB_HOST,
+} = require("./config/config.js");
 
-const sequelize = new Sequelize("railway", "postgres", "0b7Pj8LIKgiDIU6ppps3", {
-  host: "containers-us-west-81.railway.app",
-
-  // host: "localhost",
+const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
+  host: DB_HOST,
   dialect: "postgres",
   logging: console.log(),
 });
