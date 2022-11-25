@@ -1,7 +1,5 @@
-import React, { useEffect } from "react";
-import GoogleLogin from "react-google-login";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Grid from "./commons/Grid";
 import Favorites from "./components/Favorites";
 import Movies from "./components/Movies";
 import Navibar from "./components/Navibar";

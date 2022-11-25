@@ -1,6 +1,4 @@
-# 26 - TMDB
-
-![logop5](https://p5-hall-of-fame.s3.amazonaws.com/p5logo.png)
+# TMDB
 
 ### Objetivos
 
