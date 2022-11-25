@@ -37,7 +37,7 @@
   "scripts": {
     "start": "concurrently 'npm run server' 'npm run client'",
     "server": "nodemon api/server.js",
-    "client": "react-scripts start",
+    "client": "set \"CI=false\" && react-scripts build",
     "build": "react-scripts build"
   },
   "proxy": "http://localhost:3001",
