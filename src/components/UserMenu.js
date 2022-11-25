@@ -9,7 +9,6 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Nav from "react-bootstrap/Nav";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import CardMovieFav from "../commons/CardMovieFav";
 
 const UserMenu = () => {
