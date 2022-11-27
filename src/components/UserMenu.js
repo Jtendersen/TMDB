@@ -24,9 +24,14 @@ const UserMenu = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.get(`/api/users/find/${userSearch}`).then((res) => {
-      setFindedUsers(res.data);
-    });
+    axios
+      .get(`https://tmdb.up.railway.app/api/users/find/${userSearch}`, {
+        withCredentials: true,
+        credentials: "include",
+      })
+      .then((res) => {
+        setFindedUsers(res.data);
+      });
   };
 
   const userDetails = (userClickedId) => {

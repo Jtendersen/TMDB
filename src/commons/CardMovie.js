@@ -45,23 +45,32 @@ const CardMovie = ({
 
   const addToFavorites = () => {
     axios
-      .post(`/api/favorites/add/${userSuccess.userSuccess.username}`, {
-        movieTitle: title || name,
-        tmdbId: id,
-        media_type: media_type,
-      })
+      .post(
+        // `/api/favorites/add/${userSuccess.userSuccess.username}`
+        `https://tmdb.up.railway.app/api/favorites/add/${userSuccess.userSuccess.username}`,
+        {
+          movieTitle: title || name,
+          tmdbId: id,
+          media_type: media_type,
+        },
+        { withCredentials: true, credentials: "include" }
+      )
       .then(() => console.log("Favorite was magicaly created"));
     setFavorite(!favorite);
   };
 
   const removeFromFavorites = () => {
     axios
-      .delete(`/api/favorites/${userSuccess.userSuccess.username}`, {
-        headers: {},
-        data: {
-          tmdbId: id,
+      .delete(
+        `https://tmdb.up.railway.app/api/favorites/${userSuccess.userSuccess.username}`,
+        {
+          headers: {},
+          data: {
+            tmdbId: id,
+          },
         },
-      })
+        { withCredentials: true, credentials: "include" }
+      )
       .then(() => console.log("Favorite was worderfully removed"));
     setFavorite(!favorite);
   };

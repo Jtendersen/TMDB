@@ -51,13 +51,17 @@ const RegisterForm = () => {
 
     setValidated(true);
     axios
-      .post("api/users", {
-        email,
-        username,
-        name: firstName,
-        lastname: lastName,
-        password: pass,
-      })
+      .post(
+        "https://tmdb.up.railway.app/api/users",
+        {
+          email,
+          username,
+          name: firstName,
+          lastname: lastName,
+          password: pass,
+        },
+        { withCredentials: true, credentials: "include" }
+      )
       .then(() => handleClose())
       .catch((err) => console.log(err));
   };

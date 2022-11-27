@@ -17,7 +17,10 @@ const Favorites = () => {
 
   useEffect(() => {
     axios
-      .get(`/api/favorites/${userSuccess.userSuccess.username}`)
+      .get(
+        `https://tmdb.up.railway.app/api/favorites/${userSuccess.userSuccess.username}`,
+        { withCredentials: true, credentials: "include" }
+      )
       .then((res) => {
         favorites.setFavorites(res.data);
       });

@@ -33,10 +33,14 @@ const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("/api/login", {
-        username: username,
-        password: pass,
-      })
+      .post(
+        "https://tmdb.up.railway.app/api/login",
+        {
+          username: username,
+          password: pass,
+        },
+        { withCredentials: true, credentials: "include" }
+      )
       .then((res) => userSuccess.setUserSuccess(res.data))
       .then(() => handleClose())
       .then(() => {
@@ -48,7 +52,12 @@ const LoginForm = () => {
 
   const handleLogout = (e) => {
     e.preventDefault();
-    axios.post("/api/logout").then(() => userSuccess.setUserSuccess({}));
+    axios
+      .post("https://tmdb.up.railway.app/api/logout", {
+        withCredentials: true,
+        credentials: "include",
+      })
+      .then(() => userSuccess.setUserSuccess({}));
     navigate("/");
   };
 
@@ -86,7 +95,10 @@ const LoginForm = () => {
 
   useEffect(() => {
     axios
-      .get("/api/users/me")
+      .get("https://tmdb.up.railway.app/api/users/me", {
+        withCredentials: true,
+        credentials: "include",
+      })
       .then((res) => res.data)
       .then((user) => {
         userSuccess.setUserSuccess(user);
