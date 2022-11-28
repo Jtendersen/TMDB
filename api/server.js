@@ -13,7 +13,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://tmdb-jtendersen.vercel.app/",
     methods: ["GET", "POST", "DELETE", "OPTIONS"],
     credentials: true,
   })
