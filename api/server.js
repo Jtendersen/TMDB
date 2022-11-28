@@ -2,7 +2,13 @@ const express = require("express");
 const morgan = require("morgan");
 var cookieParser = require("cookie-parser");
 const cors = require("cors");
-const { PORT } = require("./config/config.js");
+const {
+  PORT,
+  DB_HOST,
+  DB_USER,
+  DB_PASSWORD,
+  DB_NAME,
+} = require("./config/config.js");
 
 console.log("este es el port", PORT);
 
@@ -24,8 +30,6 @@ app.use(cookieParser());
 app.use(morgan("tiny"));
 
 app.use("/api", routes);
-
-// const PORT = process.env.PORT || 3001;
 
 db.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
