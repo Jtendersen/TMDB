@@ -42,7 +42,6 @@ const CardMovieFav = ({ movie }) => {
     ? axios
         .get(
           `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=ef0f5ca3ae927c0b99427766940e8457&language=es-AR`
-          // { withCredentials: true, credentials: "include" }
         )
         .then((res) => {
           setMedia_type(res.data.media_type);
@@ -57,7 +56,6 @@ const CardMovieFav = ({ movie }) => {
     : axios
         .get(
           `https://api.themoviedb.org/3/tv/${movie.tmdbId}?api_key=ef0f5ca3ae927c0b99427766940e8457&language=es-AR`
-          // { withCredentials: true, credentials: "include" }
         )
         .then((res) => {
           setMedia_type(res.data.media_type);

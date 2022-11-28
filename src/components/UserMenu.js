@@ -25,7 +25,7 @@ const UserMenu = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .get(`https://tmdb.up.railway.app/api/users/find/${userSearch}`, {
+      .get(`https://tmdb.onrender.com/api/users/find/${userSearch}`, {
         withCredentials: true,
         credentials: "include",
       })

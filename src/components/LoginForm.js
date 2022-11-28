@@ -34,7 +34,7 @@ const LoginForm = () => {
     e.preventDefault();
     axios
       .post(
-        "https://tmdb.up.railway.app/api/login",
+        "https://tmdb.onrender.com/api/login",
         {
           username: username,
           password: pass,
@@ -53,7 +53,7 @@ const LoginForm = () => {
   const handleLogout = (e) => {
     e.preventDefault();
     axios
-      .post("https://tmdb.up.railway.app/api/logout", {
+      .post("https://tmdb.onrender.com/api/logout", {
         withCredentials: true,
         credentials: "include",
       })
@@ -95,7 +95,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     axios
-      .get("https://tmdb.up.railway.app/api/users/me", {
+      .get("https://tmdb.onrender.com/api/users/me", {
         withCredentials: true,
         credentials: "include",
       })
