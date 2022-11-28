@@ -23,13 +23,13 @@ app.use(morgan("tiny"));
 
 app.use("/api", routes);
 
-app.use(
-  cors({
-    origin: "https://tmdb-jtendersen.vercel.app/",
-    methods: ["GET", "POST", "DELETE", "OPTIONS"],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "https://tmdb-jtendersen.vercel.app/",
+//     methods: ["GET", "POST", "DELETE", "OPTIONS"],
+//     credentials: true,
+//   })
+// );
 
 db.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
