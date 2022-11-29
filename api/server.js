@@ -21,9 +21,15 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(morgan("tiny"));
 
-app.use("/api", routes);
+app.use(
+  cors({
+    origin: "https://tmdb-jtendersen.vercel.app",
+    methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"],
+    credentials: true,
+  })
+);
 
-app.use(cors());
+app.use("/api", routes);
 
 db.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
