@@ -53,10 +53,13 @@ const LoginForm = () => {
   const handleLogout = (e) => {
     e.preventDefault();
     axios
-      .post("https://tmdb.onrender.com/api/logout", {
-        withCredentials: true,
-        credentials: "include",
-      })
+      .post(
+        "https://tmdb.onrender.com/api/logout"
+        // {
+        //   withCredentials: true,
+        //   credentials: "include",
+        // }
+      )
       .then(() => userSuccess.setUserSuccess({}));
     navigate("/");
   };
@@ -95,10 +98,13 @@ const LoginForm = () => {
 
   useEffect(() => {
     axios
-      .get("https://tmdb.onrender.com/api/users/me", {
-        withCredentials: true,
-        credentials: "include",
-      })
+      .get(
+        "https://tmdb.onrender.com/api/users/me"
+        // {
+        //   withCredentials: true,
+        //   credentials: "include",
+        // }
+      )
       .then((res) => res.data)
       .then((user) => {
         userSuccess.setUserSuccess(user);
@@ -155,7 +161,7 @@ const LoginForm = () => {
             </>
           ) : (
             <>
-              <GoogleLoginComponent />
+              {/* <GoogleLoginComponent /> */}
               <Button variant="secondary" onClick={handleClose}>
                 Close
               </Button>

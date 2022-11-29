@@ -52,8 +52,8 @@ const CardMovie = ({
           movieTitle: title || name,
           tmdbId: id,
           media_type: media_type,
-        },
-        { withCredentials: true, credentials: "include" }
+        }
+        // { withCredentials: true, credentials: "include" }
       )
       .then(() => console.log("Favorite was magicaly created"));
     setFavorite(!favorite);
@@ -68,8 +68,8 @@ const CardMovie = ({
           data: {
             tmdbId: id,
           },
-        },
-        { withCredentials: true, credentials: "include" }
+        }
+        // { withCredentials: true, credentials: "include" }
       )
       .then(() => console.log("Favorite was worderfully removed"));
     setFavorite(!favorite);

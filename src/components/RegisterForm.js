@@ -59,8 +59,8 @@ const RegisterForm = () => {
           name: firstName,
           lastname: lastName,
           password: pass,
-        },
-        { withCredentials: true, credentials: "include" }
+        }
+        // { withCredentials: true, credentials: "include" }
       )
       .then(() => handleClose())
       .catch((err) => console.log(err));

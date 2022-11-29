@@ -79,14 +79,14 @@ const CardMovieFav = ({ movie }) => {
   const removeFromFavorites = () => {
     axios
       .delete(
-        `https://tmdb.up.railway.app/api/favorites/${userSuccess.userSuccess.username}`,
+        `https://tmdb.onrender.com/api/favorites/${userSuccess.userSuccess.username}`,
         {
           headers: {},
           data: {
             tmdbId: id,
           },
-        },
-        { withCredentials: true, credentials: "include" }
+        }
+        // { withCredentials: true, credentials: "include" }
       )
       .then(() => {
         remove === false ? setRemove(true) : setRemove(false);

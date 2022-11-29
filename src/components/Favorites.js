@@ -18,8 +18,8 @@ const Favorites = () => {
   useEffect(() => {
     axios
       .get(
-        `https://tmdb.onrender.com/api/favorites/${userSuccess.userSuccess.username}`,
-        { withCredentials: true, credentials: "include" }
+        `https://tmdb.onrender.com/api/favorites/${userSuccess.userSuccess.username}`
+        // { withCredentials: true, credentials: "include" }
       )
       .then((res) => {
         favorites.setFavorites(res.data);
