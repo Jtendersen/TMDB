@@ -18,7 +18,7 @@ const Favorites = () => {
   useEffect(() => {
     axios
       .get(
-        `https://tmdb.onrender.com/api/favorites/${userSuccess.userSuccess.username}`
+        `/api/favorites/${userSuccess.userSuccess.username}`
         // { withCredentials: true, credentials: "include" }
       )
       .then((res) => {

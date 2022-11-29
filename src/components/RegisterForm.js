@@ -52,7 +52,7 @@ const RegisterForm = () => {
     setValidated(true);
     axios
       .post(
-        "https://tmdb.onrender.com/api/users",
+        "/api/users",
         {
           email,
           username,
