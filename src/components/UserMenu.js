@@ -26,7 +26,7 @@ const UserMenu = () => {
     e.preventDefault();
     axios
       .get(
-        `/api/users/find/${userSearch}`
+        `https://tmdb.onrender.com/api/users/find/${userSearch}`
         // {
         //   withCredentials: true,
         //   credentials: "include",

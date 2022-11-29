@@ -47,7 +47,7 @@ const CardMovie = ({
     axios
       .post(
         // `/api/favorites/add/${userSuccess.userSuccess.username}`
-        `/api/favorites/add/${userSuccess.userSuccess.username}`,
+        `https://tmdb.onrender.com/api/favorites/add/${userSuccess.userSuccess.username}`,
         {
           movieTitle: title || name,
           tmdbId: id,
@@ -62,7 +62,7 @@ const CardMovie = ({
   const removeFromFavorites = () => {
     axios
       .delete(
-        `/api/favorites/${userSuccess.userSuccess.username}`,
+        `https://tmdb.onrender.com/api/favorites/${userSuccess.userSuccess.username}`,
         {
           headers: {},
           data: {

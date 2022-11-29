@@ -34,7 +34,7 @@ const LoginForm = () => {
     e.preventDefault();
     axios
       .post(
-        "/api/login",
+        "https://tmdb.onrender.com/api/login",
         {
           username: username,
           password: pass,
@@ -54,7 +54,7 @@ const LoginForm = () => {
     e.preventDefault();
     axios
       .post(
-        "/api/logout"
+        "https://tmdb.onrender.com/api/logout"
         // {
         //   withCredentials: true,
         //   credentials: "include",
@@ -99,7 +99,7 @@ const LoginForm = () => {
   useEffect(() => {
     axios
       .get(
-        "/api/users/me"
+        "https://tmdb.onrender.com/api/users/me"
         // {
         //   withCredentials: true,
         //   credentials: "include",
